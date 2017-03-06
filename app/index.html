@@ -4,33 +4,14 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 	<link rel="stylesheet" href="css/style.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="scripts/jquery.autocomplete.min.js"></script>
 	<script src="scripts/app.js"></script>
 </head>
 <body>
-<form class="search" role="search" method="get" action="/">
-	<svg class="icon-search" viewBox="0 0 483.083 483.083">
-		<g>
-			<g>
-				<path d="M332.74,315.35c30.883-33.433,50.15-78.2,50.15-127.5C382.89,84.433,298.74,0,195.04,0S7.19,84.433,7.19,187.85
-S91.34,375.7,195.04,375.7c42.217,0,81.033-13.883,112.483-37.4l139.683,139.683c3.4,3.4,7.65,5.1,11.9,5.1s8.783-1.7,11.9-5.1
-c6.517-6.517,6.517-17.283,0-24.083L332.74,315.35z M41.19,187.85C41.19,103.133,110.04,34,195.04,34
-c84.717,0,153.85,68.85,153.85,153.85S280.04,341.7,195.04,341.7S41.19,272.567,41.19,187.85z">
-			</g>
-		</g>
-	</svg>
-
-	<input type="search" name="s" placeholder="Search">
-
-	<svg class="icon-close" viewBox="0 0 612 612">
-		<g>
-			<g id="cross">
-				<g>
-					<polygon points="612,36.004 576.521,0.603 306,270.608 35.478,0.603 0,36.004 270.522,306.011 0,575.997 35.478,611.397
-306,341.411 576.521,611.397 612,575.997 341.459,306.011" />
-				</g>
-			</g>
-		</g>
-	</svg>
+<body>
+<form class="inputbox">
+	<input required="required" placeholder="Search Programs" id="search"/>
+	<button class="del" type="reset"></button>
 </form>
 </body>
 </html>

@@ -1,108 +1,147 @@
-$blue: #39c;
-$lightBlue: #67b8de;
-$lighterBlue: #91c9e8;
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  outline: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-}
-
-html {
-  height: 100vh;
-}
+@import url(http://fonts.googleapis.com/css?family=Roboto:300);
 
 body {
-  font-size: 36px;
-  font-weight: 100;
-  text-align: center;
-  background-color: $lighterBlue;
+  background: #ffffe6;
+  color: #191919;
 }
 
-.search {
+$size: 50px;
+$width: 600px;
+$stroke: 2px;
+$speed: 0.3s;
+
+.autocomplete-suggestion {
+  height: $size;
+  width: $width;
+  min-width: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  border: 0;
+  background: none;
+  transition: width $speed ease-in-out, border-radius $speed ease-in-out, padding $speed/2;
+  box-shadow: 0 0 0 $stroke currentColor;
+  color: inherit;
+  cursor: pointer;
+  margin-top: 1.5px;
+  padding: ($size - 16 - 1)/2 0;
+  padding-right: $size;
+  font-weight: lighter;
+  font-family: 'Roboto';
+  transition-delay: $speed, 0s, $speed;
+  outline: 0;
+  border-radius: 0;
+  padding-left: ($size - 16 - 1)/2;
+}
+
+.inputbox {
+  height: $size;
+  width: $width;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
-  &.expand {
-    input {
-      max-width: 320px;
-      padding: 3px 56px 3px 10px;
-      line-height: 1;
-      cursor: auto;
-      background-color: $lightBlue;
-    }
-
-    .icon-close {
-      z-index: 9;
-      opacity: 1;
-    }
-  }
-
   input {
-    width: calc(100% - 40px);
-    max-width: 120px;
-    box-sizing: border-box;
-    padding: 3px 0;
-    line-height: 1;
-    color: $blue;
-    cursor: pointer;
-    background-color: transparent;
-    border: none;
-    border-radius: 0;
-    transition: all 0.25s;
+	min-width: 0;
+	box-sizing: border-box;
+	font-size: 16px;
+	padding: ($size - 16 - 1)/2 0;
+	border: 0;
+	background: none;
+	width: $size;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	border-radius: 100%;
+	transition: width $speed ease-in-out, border-radius $speed ease-in-out, padding $speed/2;
+	transition-delay: 0s, $speed, 0s;
+	box-shadow: 0 0 0 $stroke currentColor;
+	color: inherit;
+	cursor: pointer;
+	padding: ($size - 16 - 1)/2 0;
+	padding-right: $size;
+	font-weight: lighter;
+	font-family: 'Roboto';
 
-    &::-webkit-input-placeholder {
-      color: $blue;
-    }
+	&:focus, &:valid {
+	  width: 100%;
+	  transition-delay: $speed, 0s, $speed;
+	  outline: 0;
+	  border-radius: 0;
+	  cursor: text;
+	  padding-left: ($size - 16 - 1)/2;
 
-    &::-moz-placeholder {
-      color: $blue;
-    }
 
-    &:-moz-placeholder {
-      color: $blue;
-    }
+	  +.del {
+		pointer-events: all;
+		left: calc(100% - #{$size/2});
+		transition-delay: $speed;
 
-    &:-ms-input-placeholder {
-      color: $blue;
-    }
+		&:focus {
+		  box-shadow: 0 0 0 1px currentColor;
+		  height: $size/4*3;
+		  width: $size/4*3;
+		}
+		&:before {
+		  transform: translate(-50%,-50%) rotate(-45deg) scaleY(0.7);
+		  transition-delay: 0s;
+
+		}
+		&:after {
+		  transform: translate(-50%,-50%) rotate(45deg) scaleY(0.7);
+		  transition-delay: $speed/2;
+
+		}
+	  }
+	}
   }
 
-  .icon-search {
-    position: relative;
-    top: 4px;
-    right: 10px;
-    float: left;
-    width: 36px;
+  .del {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	height: $size;
+	width: $size;
+	padding: 0;
+	background: none;
+	border-radius: 100%;
+	border: 0;
+	pointer-events: none;
+	transition: left $speed ease-in-out;
+	transition-delay: 0s;
+	color: inherit;
+	cursor: pointer;
 
-    path {
-      fill: $blue;
-    }
+	&:focus {
+	  outline: none;
+	}
+
+	&:before {
+	  content: '';
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  background:  currentColor;
+	  width: $stroke;
+	  height: $size/4*3;
+	  transform: translate($size/8*5 + 1,$size/8*5 + 1) translate(-50%,-50%) rotate(-45deg) scaleY(1);
+	  transition: transform $speed/2 ease-in-out;
+	  transition-delay: $speed*1.5;
+	}
+	&:after {
+	  content: '';
+	  position: absolute;
+	  top: 50%;
+	  left: 50%;
+	  background:  currentColor;
+	  width: $stroke;
+	  height: $size/4*3;
+	  transform: translate(-50%,-50%) rotate(45deg) scaleY(0);
+	  transition: transform $speed/2 ease-in-out;
+	  transition-delay: $speed;
+	}
   }
 
-  .icon-close {
-    position: absolute;
-    right: 2px;
-    bottom: 0;
-    z-index: -9;
-    width: 46px;
-    padding: 9px 8px 8px;
-    font-size: 10px;
-    cursor: pointer;
-    background-color: $blue;
-    opacity: 0;
-    transition: all 0.25s;
-
-    polygon {
-      fill: $lightBlue;
-    }
-  }
 }
