@@ -1,7 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono');
 
+$webpageBackgroundColor: #00D7FF;
+$webpageFontColor: #FFFFFF;
+
 $table-border-color: #191919;
-$table-striped-color: #efefd6;
+$table-striped-color: darken($webpageBackgroundColor, 5);
+
+$searchBarHeight: 50px;
+$searchBarWidth: 600px;
+$searchBarStrokeThickness: 2px;
+$searchBarTransitionSpeed: 0.3s;
 
 @import "components/util";
 @import "components/keybind";
@@ -9,8 +17,8 @@ $table-striped-color: #efefd6;
 @import "components/search";
 
 body {
-  background: #ffffe6;
-  color: #191919;
+  background: $webpageBackgroundColor;
+  color: $webpageFontColor;
   font-family: "Roboto", sans-serif;
   font-size: 18px;
   padding: 5%;
