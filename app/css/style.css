@@ -3,6 +3,19 @@ body {
   background: #ffffe6;
   color: #191919; }
 
+.shortcut {
+  font-family: "Roboto Mono",monospace; }
+
+.key {
+  background-color: #e9e9e9;
+  background-image: linear-gradient(to bottom, #000, #606060);
+  border: 1px solid #454545;
+  border-radius: 3px;
+  box-shadow: inset 0 1.5px 0 0 #808080, inset 0 -3px 0 0 #000;
+  color: #f0f0f0;
+  margin: 2px;
+  padding: 5px 8px; }
+
 .autocomplete-suggestion {
   height: 50px;
   width: 600px;
@@ -11,7 +24,7 @@ body {
   font-size: 16px;
   border: 0;
   background: none;
-  transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, padding 0.15s;
+  transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, padding 0.15s, 0.3s;
   box-shadow: 0 0 0 2px currentColor;
   color: inherit;
   cursor: pointer;
@@ -19,11 +32,10 @@ body {
   padding: 16.5px 0;
   padding-right: 50px;
   font-weight: lighter;
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   transition-delay: 0.3s, 0s, 0.3s;
   outline: 0;
-  border-radius: 0;
-  padding-left: 16.5px; }
+  border-radius: 0; }
 
 .inputbox {
   height: 50px;
@@ -31,7 +43,8 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); }
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, padding 0.15s, 0.3s; }
   .inputbox input {
     min-width: 0;
     box-sizing: border-box;
@@ -45,15 +58,14 @@ body {
     left: 50%;
     transform: translateX(-50%);
     border-radius: 100%;
-    transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, padding 0.15s;
     transition-delay: 0s, 0.3s, 0s;
     box-shadow: 0 0 0 2px currentColor;
     color: inherit;
     cursor: pointer;
-    padding: 16.5px 0;
     padding-right: 50px;
     font-weight: lighter;
-    font-family: 'Roboto'; }
+    font-family: 'Roboto', sans-serif;
+    transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, padding 0.15s, 0.3s; }
     .inputbox input:focus, .inputbox input:valid {
       width: 100%;
       transition-delay: 0.3s, 0s, 0.3s;

@@ -10,6 +10,23 @@ $width: 600px;
 $stroke: 2px;
 $speed: 0.3s;
 
+.shortcut
+{
+  font-family: "Roboto Mono",monospace;
+}
+
+.key
+{
+  background-color: #e9e9e9;
+  background-image: linear-gradient(to bottom,#000,#606060);
+  border: 1px solid #454545;
+  border-radius: 3px;
+  box-shadow: inset 0 1.5px 0 0 #808080, inset 0 -3px 0 0 #000;
+  color: #f0f0f0;
+  margin: 2px;
+  padding: 5px 8px;
+}
+
 .autocomplete-suggestion {
   height: $size;
   width: $width;
@@ -18,7 +35,7 @@ $speed: 0.3s;
   font-size: 16px;
   border: 0;
   background: none;
-  transition: width $speed ease-in-out, border-radius $speed ease-in-out, padding $speed/2;
+  transition: width $speed ease-in-out, border-radius $speed ease-in-out, padding $speed/2, $speed;
   box-shadow: 0 0 0 $stroke currentColor;
   color: inherit;
   cursor: pointer;
@@ -26,11 +43,10 @@ $speed: 0.3s;
   padding: ($size - 16 - 1)/2 0;
   padding-right: $size;
   font-weight: lighter;
-  font-family: 'Roboto';
+  font-family: 'Roboto', sans-serif;
   transition-delay: $speed, 0s, $speed;
   outline: 0;
   border-radius: 0;
-  padding-left: ($size - 16 - 1)/2;
 }
 
 .inputbox {
@@ -40,6 +56,7 @@ $speed: 0.3s;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  transition: width $speed ease-in-out, border-radius $speed ease-in-out, padding $speed/2, $speed;
 
   input {
 	min-width: 0;
@@ -54,15 +71,14 @@ $speed: 0.3s;
 	left: 50%;
 	transform: translateX(-50%);
 	border-radius: 100%;
-	transition: width $speed ease-in-out, border-radius $speed ease-in-out, padding $speed/2;
 	transition-delay: 0s, $speed, 0s;
 	box-shadow: 0 0 0 $stroke currentColor;
 	color: inherit;
 	cursor: pointer;
-	padding: ($size - 16 - 1)/2 0;
 	padding-right: $size;
 	font-weight: lighter;
-	font-family: 'Roboto';
+	font-family: 'Roboto', sans-serif;
+	transition: width $speed ease-in-out, border-radius $speed ease-in-out, padding $speed/2, $speed;
 
 	&:focus, &:valid {
 	  width: 100%;
