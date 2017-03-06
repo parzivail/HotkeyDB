@@ -1,0 +1,108 @@
+$blue: #39c;
+$lightBlue: #67b8de;
+$lighterBlue: #91c9e8;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+html {
+  height: 100vh;
+}
+
+body {
+  font-size: 36px;
+  font-weight: 100;
+  text-align: center;
+  background-color: $lighterBlue;
+}
+
+.search {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &.expand {
+    input {
+      max-width: 320px;
+      padding: 3px 56px 3px 10px;
+      line-height: 1;
+      cursor: auto;
+      background-color: $lightBlue;
+    }
+
+    .icon-close {
+      z-index: 9;
+      opacity: 1;
+    }
+  }
+
+  input {
+    width: calc(100% - 40px);
+    max-width: 120px;
+    box-sizing: border-box;
+    padding: 3px 0;
+    line-height: 1;
+    color: $blue;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    transition: all 0.25s;
+
+    &::-webkit-input-placeholder {
+      color: $blue;
+    }
+
+    &::-moz-placeholder {
+      color: $blue;
+    }
+
+    &:-moz-placeholder {
+      color: $blue;
+    }
+
+    &:-ms-input-placeholder {
+      color: $blue;
+    }
+  }
+
+  .icon-search {
+    position: relative;
+    top: 4px;
+    right: 10px;
+    float: left;
+    width: 36px;
+
+    path {
+      fill: $blue;
+    }
+  }
+
+  .icon-close {
+    position: absolute;
+    right: 2px;
+    bottom: 0;
+    z-index: -9;
+    width: 46px;
+    padding: 9px 8px 8px;
+    font-size: 10px;
+    cursor: pointer;
+    background-color: $blue;
+    opacity: 0;
+    transition: all 0.25s;
+
+    polygon {
+      fill: $lightBlue;
+    }
+  }
+}

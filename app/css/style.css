@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent; }
+
+html {
+  height: 100vh; }
+
+body {
+  font-size: 36px;
+  font-weight: 100;
+  text-align: center;
+  background-color: #91c9e8; }
+
+.search {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+  .search.expand input {
+    max-width: 320px;
+    padding: 3px 56px 3px 10px;
+    line-height: 1;
+    cursor: auto;
+    background-color: #67b8de; }
+  .search.expand .icon-close {
+    z-index: 9;
+    opacity: 1; }
+  .search input {
+    width: calc(100% - 40px);
+    max-width: 120px;
+    box-sizing: border-box;
+    padding: 3px 0;
+    line-height: 1;
+    color: #39c;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    transition: all 0.25s; }
+    .search input::-webkit-input-placeholder {
+      color: #39c; }
+    .search input::-moz-placeholder {
+      color: #39c; }
+    .search input:-moz-placeholder {
+      color: #39c; }
+    .search input:-ms-input-placeholder {
+      color: #39c; }
+  .search .icon-search {
+    position: relative;
+    top: 4px;
+    right: 10px;
+    float: left;
+    width: 36px; }
+    .search .icon-search path {
+      fill: #39c; }
+  .search .icon-close {
+    position: absolute;
+    right: 2px;
+    bottom: 0;
+    z-index: -9;
+    width: 46px;
+    padding: 9px 8px 8px;
+    font-size: 10px;
+    cursor: pointer;
+    background-color: #39c;
+    opacity: 0;
+    transition: all 0.25s; }
+    .search .icon-close polygon {
+      fill: #67b8de; }
