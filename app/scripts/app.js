@@ -21,11 +21,12 @@ $(document).ready(function () {
 			return {value: item.friendlyName, data: item.id};
 		});
 
-		programAutocomplete = $.grep(programAutocomplete, function (item, pos) {
-			return programAutocomplete.map(function (e) {
-					return e.id;
-				}).indexOf(item.id) == pos;
-		});
+		// Don't need to filter out dupes -- API does this automatically
+		// programAutocomplete = $.grep(programAutocomplete, function (item, pos) {
+		// 	return programAutocomplete.map(function (e) {
+		// 			return e.id;
+		// 		}).indexOf(item.id) == pos;
+		// });
 
 		search.autocomplete({
 			lookup: programAutocomplete,
@@ -61,8 +62,36 @@ $(document).ready(function () {
 			else if (key == "then")
 				final += ' then ';
 			else
-				final += '<span class="key">' + key + '</span>';
+				final += '<span class="key">' + key.toUpperCase() + '</span>';
 		});
+
+		if (item.altKeybind != "" && item.altKeybind != undefined) {
+			final += " (Alternate: ";
+
+			var altkeybind = item.altKeybind;
+			var altkeys = keybind.split("\+");
+
+			$.each(altkeys, function (idx, key) {
+				if (key == "\\c")
+					final += '<span class="key">CTRL</span>';
+				else if (key == "\\s")
+					final += '<span class="key">SHIFT</span>';
+				else if (key == "\\a")
+					final += '<span class="key">ALT</span>';
+				else if (key == "\\f")
+					final += '<span class="key">FN</span>';
+				else if (key == "\\w")
+					final += '<span class="key">WIN</span>';
+				else if (key == "\\plus")
+					final += '<span class="key">+</span>';
+				else if (key == "\\then")
+					final += ' then ';
+				else
+					final += '<span class="key">' + key.toUpperCase() + '</span>';
+			});
+
+			final += ")";
+		}
 
 		return final;
 	};
