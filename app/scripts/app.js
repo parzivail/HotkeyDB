@@ -45,7 +45,7 @@ $(document).ready(function () {
 
 	var createShortcut = function (item) {
 		var keybind = item.keybind;
-		var keys = keybind.split("\+");
+		var keys = keybind.split("_");
 		var final = "";
 
 		$.each(keys, function (idx, key) {
@@ -59,6 +59,10 @@ $(document).ready(function () {
 				final += '<span class="key">FN</span>';
 			else if (key == "\\w")
 				final += '<span class="key">WIN</span>';
+			else if (key == "\\t")
+				final += '<span class="key">TAB</span>';
+			else if (key == "\\plus")
+				final += '<span class="key">+</span>';
 			else if (key == "then")
 				final += ' then ';
 			else
@@ -69,7 +73,7 @@ $(document).ready(function () {
 			final += " (Alternate: ";
 
 			var altkeybind = item.altKeybind;
-			var altkeys = keybind.split("\+");
+			var altkeys = altkeybind.split("_");
 
 			$.each(altkeys, function (idx, key) {
 				if (key == "\\c")
@@ -82,6 +86,8 @@ $(document).ready(function () {
 					final += '<span class="key">FN</span>';
 				else if (key == "\\w")
 					final += '<span class="key">WIN</span>';
+				else if (key == "\\t")
+					final += '<span class="key">TAB</span>';
 				else if (key == "\\plus")
 					final += '<span class="key">+</span>';
 				else if (key == "\\then")
