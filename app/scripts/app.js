@@ -86,6 +86,7 @@ $(document).ready(function () {
 			final += createKey(key.toUpperCase());
 		return final;
 	};
+
 	var createShortcut = function (item) {
 		var keybind = item.keybind;
 		var keys = keybind.split("_");
@@ -134,7 +135,7 @@ $(document).ready(function () {
 				tablebody.html("");
 				$.each(data, function (idx, item) {
 					//<span class="key">CTRL</span>+<span class="key">Shift</span>+<span class="key">T</span></span>
-					tablebody.append('<tr><td>' + item.name + '</td><td><span class="shortcut">' + createShortcut(item) + '</td><td>' + item.desc + '</td><td>' + item.context + '</td></tr>');
+					tablebody.append('<tr><td class="kb_name">' + item.name + '</td><td><span class="shortcut">' + createShortcut(item) + '</td><td class="kb_desc">' + item.desc + '</td><td class="kb_context">' + item.context + '</td></tr>');
 				});
 				keybindlist.removeClass("hidden");
 				keybindlist.animateCss('fadeIn');

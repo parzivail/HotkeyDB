@@ -1,13 +1,23 @@
+// Page defaults
 $webpageBackgroundColor: #333333;
 $webpageForegroundColor: #FFFFFF;
 
-$searchHeight: 50px;
+// Search bar defaults
+$searchHeight: 60px;
 $searchWidth: 600px;
-$searchStrokeWidth: 2px;
+$searchStrokeWidth: 1px;
 $searchTransitionDuration: 0.3s;
 
+// Table defaults
 $tableBorderColor: darken($webpageBackgroundColor, 10);
 $tableStripedBgColor: darken($webpageBackgroundColor, 2);
+
+// Key defaults
+$keybindBaseColor: #D3D2CC;
+$keybindConcaveColor: lighten($keybindBaseColor, 5);
+$keybindSpecialBaseColor: darken($keybindBaseColor, 19);
+$keybindSpecialConcaveColor: lighten($keybindSpecialBaseColor, 6);
+$keybindCapTextColor: darken($keybindBaseColor, 60);
 
 // Media Query Ranges
 $small-screen-up: 601px !default;
@@ -29,6 +39,7 @@ $gutter-width: 1.5rem !default;
 $element-top-margin: $gutter-width/3 !default;
 $element-bottom-margin: ($gutter-width*2)/3 !default;
 
+// Components
 @import "components/fonts";
 @import "components/main";
 @import "components/util";

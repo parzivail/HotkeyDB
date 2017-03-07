@@ -34,7 +34,7 @@ body {
   border-color: #D3D2CC #cccbc4 #bebcb3; }
 
 .keycap {
-  min-width: 18px;
+	min-width: 20px;
   height: 30px;
   padding: 5px 7px 0 7px;
   background: -webkit-linear-gradient(left, #D3D2CC, #dfdeda, #D3D2CC);
@@ -57,6 +57,10 @@ body {
   background: -ms-linear-gradient(left, #a6a498, #b4b3a8, #a6a498);
   background: -o-linear-gradient(left, #a6a498, #b4b3a8, #a6a498);
   background: linear-gradient(left, #a6a498, #b4b3a8, #a6a498); }
+
+.kb_desc {
+	font-style: italic;
+}
 
 #keybindlist {
   top: 20%; }
@@ -157,7 +161,7 @@ td, th {
       border-right: 1px solid #1a1a1a; } }
 
 .autocomplete-suggestion {
-  height: 50px;
+	height: 60px;
   width: 600px;
   min-width: 0;
   box-sizing: border-box;
@@ -165,11 +169,11 @@ td, th {
   border: 0;
   background: none;
   transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, padding 0.15s, 0.3s;
-  box-shadow: 0 0 0 2px currentColor;
+	box-shadow: 0 0 0 1px currentColor;
   color: inherit;
   cursor: pointer;
-  margin-top: 1.5px;
-  padding: 16.5px;
+	margin-top: 1px;
+	padding: 21.5px;
   font-weight: lighter;
   font-family: 'Roboto', sans-serif;
   transition-delay: 0.3s, 0s, 0.3s;
@@ -177,7 +181,7 @@ td, th {
   border-radius: 0; }
 
 .inputbox {
-  height: 50px;
+	height: 60px;
   width: 600px;
   position: absolute;
   top: 50%;
@@ -188,20 +192,20 @@ td, th {
     min-width: 0;
     box-sizing: border-box;
     font-size: 16px;
-    padding: 16.5px 0;
+	  padding: 21.5px 0;
     border: 0;
     background: none;
-    width: 50px;
+	  width: 60px;
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 100%;
     transition-delay: 0s, 0.3s, 0s;
-    box-shadow: 0 0 0 2px currentColor;
+	  box-shadow: 0 0 0 1px currentColor;
     color: inherit;
     cursor: pointer;
-    padding-right: 50px;
+	  padding-right: 60px;
     font-weight: lighter;
     font-family: 'Roboto', sans-serif;
     transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, padding 0.15s, 0.3s; }
@@ -211,15 +215,17 @@ td, th {
       outline: 0;
       border-radius: 0;
       cursor: text;
-      padding-left: 16.5px; }
+		padding-left: 21.5px;
+	}
       .inputbox input:focus + .del, .inputbox input:valid + .del {
         pointer-events: all;
-        left: calc(100% - 25px);
+		  left: calc(100% - 30px);
         transition-delay: 0.3s; }
         .inputbox input:focus + .del:focus, .inputbox input:valid + .del:focus {
           box-shadow: 0 0 0 1px currentColor;
-          height: 37.5px;
-          width: 37.5px; }
+			height: 45px;
+			width: 45px;
+		}
         .inputbox input:focus + .del:before, .inputbox input:valid + .del:before {
           transform: translate(-50%, -50%) rotate(-45deg) scaleY(0.7);
           transition-delay: 0s; }
@@ -231,8 +237,8 @@ td, th {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 50px;
-    width: 50px;
+	  height: 60px;
+	  width: 60px;
     padding: 0;
     background: none;
     border-radius: 100%;
@@ -250,9 +256,9 @@ td, th {
       top: 50%;
       left: 50%;
       background: currentColor;
-      width: 2px;
-      height: 37.5px;
-      transform: translate(32.25px, 32.25px) translate(-50%, -50%) rotate(-45deg) scaleY(1);
+		width: 1px;
+		height: 45px;
+		transform: translate(38.5px, 38.5px) translate(-50%, -50%) rotate(-45deg) scaleY(1);
       transition: transform 0.15s ease-in-out;
       transition-delay: 0.45s; }
     .inputbox .del:after {
@@ -261,8 +267,8 @@ td, th {
       top: 50%;
       left: 50%;
       background: currentColor;
-      width: 2px;
-      height: 37.5px;
+		width: 1px;
+		height: 45px;
       transform: translate(-50%, -50%) rotate(45deg) scaleY(0);
       transition: transform 0.15s ease-in-out;
       transition-delay: 0.3s; }
