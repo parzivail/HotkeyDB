@@ -1,71 +1,73 @@
 .autocomplete-suggestion {
-  height: $searchBarHeight;
-  width: $searchBarWidth;
+  height: $searchHeight;
+  width: $searchWidth;
   min-width: 0;
   box-sizing: border-box;
   font-size: 16px;
+  border: 0;
   background: none;
-  transition: width $searchBarTransitionSpeed ease-in-out, border-radius $searchBarTransitionSpeed ease-in-out, padding $searchBarTransitionSpeed/2, $searchBarTransitionSpeed;
-  border: $searchBarStrokeThickness solid currentColor;
+  transition: width $searchTransitionDuration ease-in-out, border-radius $searchTransitionDuration ease-in-out, padding $searchTransitionDuration/2, $searchTransitionDuration;
+  box-shadow: 0 0 0 $searchStrokeWidth currentColor;
   color: inherit;
   cursor: pointer;
   margin-top: 1.5px;
-  padding: ($searchBarHeight - 16 - 1)/2;
+  padding: ($searchHeight - 16 - 1)/2;
   font-weight: lighter;
   font-family: 'Roboto', sans-serif;
-  transition-delay: $searchBarTransitionSpeed, 0s, $searchBarTransitionSpeed;
+  transition-delay: $searchTransitionDuration, 0s, $searchTransitionDuration;
   outline: 0;
   border-radius: 0;
 }
 
 .inputbox {
-  height: $searchBarHeight;
-  width: $searchBarWidth;
+  height: $searchHeight;
+  width: $searchWidth;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: width $searchBarTransitionSpeed ease-in-out, border-radius $searchBarTransitionSpeed ease-in-out, padding $searchBarTransitionSpeed/2, $searchBarTransitionSpeed;
+  transition: width $searchTransitionDuration ease-in-out, border-radius $searchTransitionDuration ease-in-out, padding $searchTransitionDuration/2, $searchTransitionDuration;
 
   input {
 	min-width: 0;
 	box-sizing: border-box;
 	font-size: 16px;
-	padding: ($searchBarHeight - 16 - 1)/2 0;
+    padding: ($searchHeight - 16 - 1)/2 0;
+    border: 0;
 	background: none;
-	width: $searchBarHeight;
+    width: $searchHeight;
 	position: absolute;
 	top: 0;
 	left: 50%;
 	transform: translateX(-50%);
 	border-radius: 100%;
-	transition-delay: 0s, $searchBarTransitionSpeed, 0s;
-	border: $searchBarStrokeThickness solid currentColor;
+    transition-delay: 0s, $searchTransitionDuration, 0s;
+    box-shadow: 0 0 0 $searchStrokeWidth currentColor;
 	color: inherit;
 	cursor: pointer;
-	padding-right: $searchBarHeight;
+    padding-right: $searchHeight;
 	font-weight: lighter;
 	font-family: 'Roboto', sans-serif;
-	transition: width $searchBarTransitionSpeed ease-in-out, border-radius $searchBarTransitionSpeed ease-in-out, padding $searchBarTransitionSpeed/2, $searchBarTransitionSpeed;
+    transition: width $searchTransitionDuration ease-in-out, border-radius $searchTransitionDuration ease-in-out, padding $searchTransitionDuration/2, $searchTransitionDuration;
 
 	&:focus, &:valid {
 	  width: 100%;
-	  transition-delay: $searchBarTransitionSpeed, 0s, $searchBarTransitionSpeed;
+      transition-delay: $searchTransitionDuration, 0s, $searchTransitionDuration;
 	  outline: 0;
 	  border-radius: 0;
 	  cursor: text;
-	  padding-left: ($searchBarHeight - 16 - 1)/2;
+      padding-left: ($searchHeight - 16 - 1)/2;
 
 
 	  +.del {
 		pointer-events: all;
-		left: calc(100% - #{$searchBarHeight/2});
-		transition-delay: $searchBarTransitionSpeed;
+        left: calc(100% - #{$searchHeight/2});
+        transition-delay: $searchTransitionDuration;
 
 		&:focus {
 		  box-shadow: 0 0 0 1px currentColor;
-		  height: $searchBarHeight/4*3;
-		  width: $searchBarHeight/4*3;
+          height: $searchHeight/4*3;
+          width: $searchHeight/4*3;
 		}
 		&:before {
 		  transform: translate(-50%,-50%) rotate(-45deg) scaleY(0.7);
@@ -74,7 +76,7 @@
 		}
 		&:after {
 		  transform: translate(-50%,-50%) rotate(45deg) scaleY(0.7);
-		  transition-delay: $searchBarTransitionSpeed/2;
+          transition-delay: $searchTransitionDuration/2;
 
 		}
 	  }
@@ -86,14 +88,14 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
-	height: $searchBarHeight;
-	width: $searchBarHeight;
+    height: $searchHeight;
+    width: $searchHeight;
 	padding: 0;
 	background: none;
 	border-radius: 100%;
 	border: 0;
 	pointer-events: none;
-	transition: left $searchBarTransitionSpeed ease-in-out;
+    transition: left $searchTransitionDuration ease-in-out;
 	transition-delay: 0s;
 	color: inherit;
 	cursor: pointer;
@@ -108,11 +110,11 @@
 	  top: 50%;
 	  left: 50%;
 	  background:  currentColor;
-	  width: $searchBarStrokeThickness;
-	  height: $searchBarHeight/4*3;
-	  transform: translate($searchBarHeight/8*5 + 1, $searchBarHeight/8*5 + 1) translate(-50%, -50%) rotate(-45deg) scaleY(1);
-	  transition: transform $searchBarTransitionSpeed/2 ease-in-out;
-	  transition-delay: $searchBarTransitionSpeed*1.5;
+      width: $searchStrokeWidth;
+      height: $searchHeight/4*3;
+      transform: translate($searchHeight/8*5 + 1, $searchHeight/8*5 + 1) translate(-50%, -50%) rotate(-45deg) scaleY(1);
+      transition: transform $searchTransitionDuration/2 ease-in-out;
+      transition-delay: $searchTransitionDuration*1.5;
 	}
 	&:after {
 	  content: '';
@@ -120,11 +122,11 @@
 	  top: 50%;
 	  left: 50%;
 	  background:  currentColor;
-	  width: $searchBarStrokeThickness;
-	  height: $searchBarHeight/4*3;
+      width: $searchStrokeWidth;
+      height: $searchHeight/4*3;
 	  transform: translate(-50%,-50%) rotate(45deg) scaleY(0);
-	  transition: transform $searchBarTransitionSpeed/2 ease-in-out;
-	  transition-delay: $searchBarTransitionSpeed;
+      transition: transform $searchTransitionDuration/2 ease-in-out;
+      transition-delay: $searchTransitionDuration;
 	}
   }
 

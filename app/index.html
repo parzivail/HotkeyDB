@@ -1,39 +1,38 @@
 <html>
 <head>
 	<title>KeybindDB</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 	<link rel="stylesheet" href="css/style.css"/>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="scripts/jquery.autocomplete.min.js"></script>
 	<script src="scripts/app.js"></script>
 </head>
 <body>
-<body>
 <div class="inputbox">
-	<input placeholder="Search Programs" id="search" class="z-depth-3"/>
+	<input required="required" placeholder="Search Programs" id="search" title="Search Programs"/>
 	<button class="del" type="reset"></button>
 </div>
-<div id="keybindlist" class="hidden">
-	<table class="striped">
-		<thead>
-		<tr>
-			<th>Name</th>
-			<th>Keybind</th>
-			<th>Description</th>
-			<th>Context</th>
-		</tr>
-		</thead>
-		<tbody id="tablebody">
-		<!--<tr>
-			<td>Reopen Last Tab</td>
-			<td><span class="shortcut"><span class="key">CTRL</span>+<span class="key">Shift</span>+<span class="key">T</span></span>
-			</td>
-			<td>Lorem ipsum description blah blah</td>
-			<td>Scope</td>
-		</tr>-->
-		</tbody>
-	</table>
+<div class="container">
+	<div class="row">
+		<div class="col s12">
+			<div id="keybindlist" class="hidden">
+				<div class="bgspacer"></div>
+				<table class="striped">
+					<thead>
+					<tr>
+						<th>Name</th>
+						<th>Keybind</th>
+						<th>Description</th>
+						<th>Context</th>
+					</tr>
+					</thead>
+					<tbody id="tablebody">
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 </div>
 </body>
 </html>

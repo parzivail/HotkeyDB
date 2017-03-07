@@ -1,25 +1,38 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono');
+$webpageBackgroundColor: #333333;
+$webpageForegroundColor: #FFFFFF;
 
-$webpageBackgroundColor: #00D7FF;
-$webpageFontColor: #FFFFFF;
+$searchHeight: 50px;
+$searchWidth: 600px;
+$searchStrokeWidth: 2px;
+$searchTransitionDuration: 0.3s;
 
-$table-border-color: #191919;
-$table-striped-color: darken($webpageBackgroundColor, 5);
+$tableBorderColor: darken($webpageBackgroundColor, 10);
+$tableStripedBgColor: darken($webpageBackgroundColor, 2);
 
-$searchBarHeight: 50px;
-$searchBarWidth: 600px;
-$searchBarStrokeThickness: 2px;
-$searchBarTransitionSpeed: 0.3s;
+// Media Query Ranges
+$small-screen-up: 601px !default;
+$medium-screen-up: 993px !default;
+$large-screen-up: 1201px !default;
+$small-screen: 600px !default;
+$medium-screen: 992px !default;
+$large-screen: 1200px !default;
 
+$medium-and-up: "only screen and (min-width : #{$small-screen-up})" !default;
+$large-and-up: "only screen and (min-width : #{$medium-screen-up})" !default;
+$small-and-down: "only screen and (max-width : #{$small-screen})" !default;
+$medium-and-down: "only screen and (max-width : #{$medium-screen})" !default;
+$medium-only: "only screen and (min-width : #{$small-screen-up}) and (max-width : #{$medium-screen})" !default;
+
+// Grid
+$num-cols: 12 !default;
+$gutter-width: 1.5rem !default;
+$element-top-margin: $gutter-width/3 !default;
+$element-bottom-margin: ($gutter-width*2)/3 !default;
+
+@import "components/fonts";
+@import "components/main";
 @import "components/util";
 @import "components/keybind";
 @import "components/table";
 @import "components/search";
-
-body {
-  background: $webpageBackgroundColor;
-  color: $webpageFontColor;
-  font-family: "Roboto", sans-serif;
-  font-size: 18px;
-  padding: 5%;
-}
+@import "components/grid";

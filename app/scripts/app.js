@@ -8,22 +8,39 @@ $(document).ready(function () {
 		}
 	});
 
+	var programs = [];
+	var programAutocomplete = [];
+	var apiUrl = "http://keybind.parzivail.com/api/v1/key/program/";
+
 	var search = $("#search");
 
-	search.autocomplete({
-		serviceUrl: "http://keybind.parzivail.com/api/v1/key/program",
-		transformResult: function (response) {
-			return {
-				suggestions: $.grep(JSON.parse(response), function (item, idx) {
-					return item.indexOf(search.val().trim()) >= 0;
-				})
-			};
-		}
-	});
+	$.getJSON(apiUrl, function (json) {
+		programs = json;
 
-	window.setTimeout(function () {
-		search.focus();
-	}, 500);
+		programAutocomplete = programs.map(function (item) {
+			return {value: item.friendlyName, data: item.id};
+		});
+
+		programAutocomplete = $.grep(programAutocomplete, function (item, pos) {
+			return programAutocomplete.map(function (e) {
+					return e.id;
+				}).indexOf(item.id) == pos;
+		});
+
+		search.autocomplete({
+			lookup: programAutocomplete,
+			onSelect: function (suggestion) {
+				var press = jQuery.Event("keydown");
+				press.ctrlKey = false;
+				press.which = -9999;
+				search.trigger(press);
+			}
+		});
+
+		window.setTimeout(function () {
+			search.focus();
+		}, 500);
+	});
 
 	var createShortcut = function (item) {
 		var keybind = item.keybind;
@@ -50,19 +67,29 @@ $(document).ready(function () {
 		return final;
 	};
 
+	var getId = function (friendlyName) {
+		var ret = "";
+		$.each(programs, function (idx, item) {
+			if (item.friendlyName == friendlyName)
+				ret = item.id;
+		});
+		return ret;
+	};
+
 	search.keydown(function (e) {
-		if (e.keyCode == 13) {
+		if (e.which == -9999) {
 			$(".inputbox").css("top", "10%");
 
-			$.getJSON("http://keybind.parzivail.com/api/v1/key/program/" + search.val(), function (data) {
+			$.getJSON(apiUrl + getId(search.val()), function (data) {
 				var tablebody = $("#tablebody");
+				var keybindlist = $("#keybindlist");
 				tablebody.html("");
 				$.each(data, function (idx, item) {
 					//<span class="key">CTRL</span>+<span class="key">Shift</span>+<span class="key">T</span></span>
 					tablebody.append('<tr><td>' + item.name + '</td><td><span class="shortcut">' + createShortcut(item) + '</td><td>' + item.desc + '</td><td>' + item.context + '</td></tr>');
 				});
-				$("#keybindlist").removeClass("hidden");
-				$('#keybindlist').animateCss('fadeIn');
+				keybindlist.removeClass("hidden");
+				keybindlist.animateCss('fadeIn');
 			});
 		}
 	});
