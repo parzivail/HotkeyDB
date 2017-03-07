@@ -43,30 +43,56 @@ $(document).ready(function () {
 		}, 500);
 	});
 
+	var createKeyFromCap = function (key, final) {
+		if (key == "\\c")
+			final += createKey("Ctrl", true);
+		else if (key == "\\s")
+			final += createKey("Shift", true);
+		else if (key == "\\a")
+			final += createKey("Alt", true);
+		else if (key == "\\f")
+			final += createKey("Fn", true);
+		else if (key == "\\w")
+			final += createKey("Win", true);
+		else if (key == "\\t")
+			final += createKey("Tab", true);
+		else if (key.toLowerCase() == "space")
+			final += createKey("Space", true);
+		else if (key.toLowerCase() == "home")
+			final += createKey("Home", true);
+		else if (key.toLowerCase() == "esc" || key.toLowerCase() == "escape")
+			final += createKey("Esc", true);
+		else if (key.toLowerCase() == "del" || key.toLowerCase() == "delete")
+			final += createKey("Delete", true);
+		else if (key.toLowerCase() == "enter" || key.toLowerCase() == "return")
+			final += createKey("Enter", true);
+		else if (key.toLowerCase() == "backspace")
+			final += createKey("Backspace", true);
+		else if (key.toLowerCase() == "end")
+			final += createKey("End", true);
+		else if (key == "\\plus")
+			final += createKey("+");
+		else if (key.toLowerCase() == "left arrow")
+			final += createKey("←");
+		else if (key.toLowerCase() == "right arrow")
+			final += createKey("→");
+		else if (key.toLowerCase() == "up arrow")
+			final += createKey("↑");
+		else if (key.toLowerCase() == "down arrow")
+			final += createKey("↓");
+		else if (key == "then")
+			final += ' then ';
+		else
+			final += createKey(key.toUpperCase());
+		return final;
+	};
 	var createShortcut = function (item) {
 		var keybind = item.keybind;
 		var keys = keybind.split("_");
 		var final = "";
 
 		$.each(keys, function (idx, key) {
-			if (key == "\\c")
-				final += '<span class="key">CTRL</span>';
-			else if (key == "\\s")
-				final += '<span class="key">SHIFT</span>';
-			else if (key == "\\a")
-				final += '<span class="key">ALT</span>';
-			else if (key == "\\f")
-				final += '<span class="key">FN</span>';
-			else if (key == "\\w")
-				final += '<span class="key">WIN</span>';
-			else if (key == "\\t")
-				final += '<span class="key">TAB</span>';
-			else if (key == "\\plus")
-				final += '<span class="key">+</span>';
-			else if (key == "then")
-				final += ' then ';
-			else
-				final += '<span class="key">' + key.toUpperCase() + '</span>';
+			final = createKeyFromCap(key, final);
 		});
 
 		if (item.altKeybind != "" && item.altKeybind != undefined) {
@@ -76,30 +102,17 @@ $(document).ready(function () {
 			var altkeys = altkeybind.split("_");
 
 			$.each(altkeys, function (idx, key) {
-				if (key == "\\c")
-					final += '<span class="key">CTRL</span>';
-				else if (key == "\\s")
-					final += '<span class="key">SHIFT</span>';
-				else if (key == "\\a")
-					final += '<span class="key">ALT</span>';
-				else if (key == "\\f")
-					final += '<span class="key">FN</span>';
-				else if (key == "\\w")
-					final += '<span class="key">WIN</span>';
-				else if (key == "\\t")
-					final += '<span class="key">TAB</span>';
-				else if (key == "\\plus")
-					final += '<span class="key">+</span>';
-				else if (key == "\\then")
-					final += ' then ';
-				else
-					final += '<span class="key">' + key.toUpperCase() + '</span>';
+				final = createKeyFromCap(key, final);
 			});
 
 			final += ")";
 		}
 
 		return final;
+	};
+
+	var createKey = function (capText, special) {
+		return '<div class="key' + (special ? " key_fn" : "") + '"><div class="keycap' + (special ? " keycap_fn" : "") + '">' + capText + '</div></div>';
 	};
 
 	var getId = function (friendlyName) {
