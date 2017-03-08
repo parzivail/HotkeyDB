@@ -11,6 +11,11 @@ body {
 .hidden {
   display: none !important; }
 
+.nonconsecutive {
+  margin: 15px 3px 0;
+  float: left;
+  font-size: 14px; }
+
 .key {
   margin: 3px;
   border-width: 2px 5px 7px;
@@ -34,14 +39,14 @@ body {
   border-color: #D3D2CC #cccbc4 #bebcb3; }
 
 .keycap {
-	min-width: 20px;
+  min-width: 20px;
   height: 30px;
   padding: 5px 7px 0 7px;
-  background: -webkit-linear-gradient(left, #D3D2CC, #dfdeda, #D3D2CC);
-  background: -moz-linear-gradient(left, #D3D2CC, #dfdeda, #D3D2CC);
-  background: -ms-linear-gradient(left, #D3D2CC, #dfdeda, #D3D2CC);
-  background: -o-linear-gradient(left, #D3D2CC, #dfdeda, #D3D2CC);
-  background: linear-gradient(left, #D3D2CC, #dfdeda, #D3D2CC);
+  background: -webkit-linear-gradient(left, #D3D2CC, #e4e3df, #D3D2CC);
+  background: -moz-linear-gradient(left, #D3D2CC, #e4e3df, #D3D2CC);
+  background: -ms-linear-gradient(left, #D3D2CC, #e4e3df, #D3D2CC);
+  background: -o-linear-gradient(left, #D3D2CC, #e4e3df, #D3D2CC);
+  background: linear-gradient(left, #D3D2CC, #e4e3df, #D3D2CC);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   border-radius: 5px;
   position: relative; }
@@ -52,15 +57,14 @@ body {
 
 .keycap_fn {
   min-width: 45px;
-  background: -webkit-linear-gradient(left, #a6a498, #b4b3a8, #a6a498);
-  background: -moz-linear-gradient(left, #a6a498, #b4b3a8, #a6a498);
-  background: -ms-linear-gradient(left, #a6a498, #b4b3a8, #a6a498);
-  background: -o-linear-gradient(left, #a6a498, #b4b3a8, #a6a498);
-  background: linear-gradient(left, #a6a498, #b4b3a8, #a6a498); }
+  background: -webkit-linear-gradient(left, #a6a498, #b9b7ae, #a6a498);
+  background: -moz-linear-gradient(left, #a6a498, #b9b7ae, #a6a498);
+  background: -ms-linear-gradient(left, #a6a498, #b9b7ae, #a6a498);
+  background: -o-linear-gradient(left, #a6a498, #b9b7ae, #a6a498);
+  background: linear-gradient(left, #a6a498, #b9b7ae, #a6a498); }
 
 .kb_desc {
-	font-style: italic;
-}
+  font-style: italic; }
 
 #keybindlist {
   top: 20%; }
@@ -161,7 +165,7 @@ td, th {
       border-right: 1px solid #1a1a1a; } }
 
 .autocomplete-suggestion {
-	height: 60px;
+  height: 60px;
   width: 600px;
   min-width: 0;
   box-sizing: border-box;
@@ -169,11 +173,11 @@ td, th {
   border: 0;
   background: none;
   transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, padding 0.15s, 0.3s;
-	box-shadow: 0 0 0 1px currentColor;
+  box-shadow: 0 0 0 1px currentColor;
   color: inherit;
   cursor: pointer;
-	margin-top: 1px;
-	padding: 21.5px;
+  margin-top: 1px;
+  padding: 21.5px;
   font-weight: lighter;
   font-family: 'Roboto', sans-serif;
   transition-delay: 0.3s, 0s, 0.3s;
@@ -181,7 +185,7 @@ td, th {
   border-radius: 0; }
 
 .inputbox {
-	height: 60px;
+  height: 60px;
   width: 600px;
   position: absolute;
   top: 50%;
@@ -192,20 +196,20 @@ td, th {
     min-width: 0;
     box-sizing: border-box;
     font-size: 16px;
-	  padding: 21.5px 0;
+    padding: 21.5px 0;
     border: 0;
     background: none;
-	  width: 60px;
+    width: 60px;
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 100%;
     transition-delay: 0s, 0.3s, 0s;
-	  box-shadow: 0 0 0 1px currentColor;
+    box-shadow: 0 0 0 1px currentColor;
     color: inherit;
     cursor: pointer;
-	  padding-right: 60px;
+    padding-right: 60px;
     font-weight: lighter;
     font-family: 'Roboto', sans-serif;
     transition: width 0.3s ease-in-out, border-radius 0.3s ease-in-out, padding 0.15s, 0.3s; }
@@ -215,17 +219,15 @@ td, th {
       outline: 0;
       border-radius: 0;
       cursor: text;
-		padding-left: 21.5px;
-	}
+      padding-left: 21.5px; }
       .inputbox input:focus + .del, .inputbox input:valid + .del {
         pointer-events: all;
-		  left: calc(100% - 30px);
+        left: calc(100% - 30px);
         transition-delay: 0.3s; }
         .inputbox input:focus + .del:focus, .inputbox input:valid + .del:focus {
           box-shadow: 0 0 0 1px currentColor;
-			height: 45px;
-			width: 45px;
-		}
+          height: 45px;
+          width: 45px; }
         .inputbox input:focus + .del:before, .inputbox input:valid + .del:before {
           transform: translate(-50%, -50%) rotate(-45deg) scaleY(0.7);
           transition-delay: 0s; }
@@ -237,8 +239,8 @@ td, th {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-	  height: 60px;
-	  width: 60px;
+    height: 60px;
+    width: 60px;
     padding: 0;
     background: none;
     border-radius: 100%;
@@ -256,9 +258,9 @@ td, th {
       top: 50%;
       left: 50%;
       background: currentColor;
-		width: 1px;
-		height: 45px;
-		transform: translate(38.5px, 38.5px) translate(-50%, -50%) rotate(-45deg) scaleY(1);
+      width: 1px;
+      height: 45px;
+      transform: translate(38.5px, 38.5px) translate(-50%, -50%) rotate(-45deg) scaleY(1);
       transition: transform 0.15s ease-in-out;
       transition-delay: 0.45s; }
     .inputbox .del:after {
@@ -267,24 +269,24 @@ td, th {
       top: 50%;
       left: 50%;
       background: currentColor;
-		width: 1px;
-		height: 45px;
+      width: 1px;
+      height: 45px;
       transform: translate(-50%, -50%) rotate(45deg) scaleY(0);
       transition: transform 0.15s ease-in-out;
       transition-delay: 0.3s; }
 
 .container {
   margin: 0 auto;
-  max-width: 1280px;
-  width: 90%; }
+  max-width: 1800px;
+  width: 98%; }
 
 @media only screen and (min-width: 601px) {
   .container {
-    width: 85%; } }
+    width: 95%; } }
 
 @media only screen and (min-width: 993px) {
   .container {
-    width: 70%; } }
+    width: 90%; } }
 
 .container .row {
   margin-left: -0.75rem;

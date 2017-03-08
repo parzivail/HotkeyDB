@@ -43,77 +43,127 @@ $(document).ready(function () {
 		}, 500);
 	});
 
-	var createKeyFromCap = function (key, final) {
-		if (key == "\\c")
-			final += createKey("Ctrl", true);
-		else if (key == "\\s")
-			final += createKey("Shift", true);
-		else if (key == "\\a")
-			final += createKey("Alt", true);
-		else if (key == "\\f")
-			final += createKey("Fn", true);
-		else if (key == "\\w")
-			final += createKey("Win", true);
-		else if (key == "\\t")
-			final += createKey("Tab", true);
-		else if (key.toLowerCase() == "space")
-			final += createKey("Space", true);
-		else if (key.toLowerCase() == "home")
-			final += createKey("Home", true);
-		else if (key.toLowerCase() == "esc" || key.toLowerCase() == "escape")
-			final += createKey("Esc", true);
-		else if (key.toLowerCase() == "del" || key.toLowerCase() == "delete")
-			final += createKey("Delete", true);
-		else if (key.toLowerCase() == "enter" || key.toLowerCase() == "return")
-			final += createKey("Enter", true);
-		else if (key.toLowerCase() == "backspace")
-			final += createKey("Backspace", true);
-		else if (key.toLowerCase() == "end")
-			final += createKey("End", true);
-		else if (key == "\\plus")
-			final += createKey("+");
-		else if (key.toLowerCase() == "left arrow")
-			final += createKey("←");
-		else if (key.toLowerCase() == "right arrow")
-			final += createKey("→");
-		else if (key.toLowerCase() == "up arrow")
-			final += createKey("↑");
-		else if (key.toLowerCase() == "down arrow")
-			final += createKey("↓");
-		else if (key == "then")
-			final += ' then ';
-		else
-			final += createKey(key.toUpperCase());
-		return final;
+	var specials = {
+		"~ES": {
+			cap: "Esc",
+			specialColor: true
+		},
+		"~T": {
+			cap: "Tab",
+			specialColor: true
+		},
+		"~CL": {
+			cap: "Caps Lock",
+			specialColor: true
+		},
+		"~S": {
+			cap: "Shift",
+			specialColor: true
+		},
+		"~FN": {
+			cap: "Fn",
+			specialColor: true
+		},
+		"~C": {
+			cap: "Ctrl",
+			specialColor: true
+		},
+		"~W": {
+			cap: "Win",
+			specialColor: true
+		},
+		"~A": {
+			cap: "Alt",
+			specialColor: true
+		},
+		"~SP": {
+			cap: "Space",
+			specialColor: true
+		},
+		"~P": {
+			cap: "PrtSc",
+			specialColor: true
+		},
+		"~PU": {
+			cap: "PgUp",
+			specialColor: true
+		},
+		"~PD": {
+			cap: "PgDn",
+			specialColor: true
+		},
+		"~H": {
+			cap: "Home",
+			specialColor: true
+		},
+		"~E": {
+			cap: "End",
+			specialColor: true
+		},
+		"~I": {
+			cap: "Ins",
+			specialColor: true
+		},
+		"~D": {
+			cap: "Del",
+			specialColor: true
+		},
+		"~B": {
+			cap: "Backspace",
+			specialColor: true
+		},
+		"~EN": {
+			cap: "Enter",
+			specialColor: true
+		},
+		"~LA": {
+			cap: "←",
+			specialColor: false
+		},
+		"~RA": {
+			cap: "→",
+			specialColor: false
+		},
+		"~UA": {
+			cap: "↑",
+			specialColor: false
+		},
+		"~DA": {
+			cap: "↓",
+			specialColor: false
+		}
+	};
+
+	var fixCap = function (cap) {
+		var up = cap.toUpperCase().trim();
+		var spec = specials[up];
+		if (!spec)
+			return {
+				cap: up,
+				special: false
+			};
+		return spec;
 	};
 
 	var createShortcut = function (item) {
-		var keybind = item.keybind;
-		var keys = keybind.split("_");
-		var final = "";
-
-		$.each(keys, function (idx, key) {
-			final = createKeyFromCap(key, final);
-		});
-
-		if (item.altKeybind != "" && item.altKeybind != undefined) {
-			final += " (Alternate: ";
-
-			var altkeybind = item.altKeybind;
-			var altkeys = altkeybind.split("_");
-
-			$.each(altkeys, function (idx, key) {
-				final = createKeyFromCap(key, final);
-			});
-
-			final += ")";
-		}
-
-		return final;
+		if (item.type == "key")
+			return createKey(fixCap(item.data));
+		else
+			return "";
 	};
 
-	var createKey = function (capText, special) {
-		return '<div class="key' + (special ? " key_fn" : "") + '"><div class="keycap' + (special ? " keycap_fn" : "") + '">' + capText + '</div></div>';
+	var createKey = function (cap) {
+		return '<div class="key' + (cap.specialColor ? " key_fn" : "") + '"><div class="keycap' + (cap.specialColor ? " keycap_fn" : "") + '">' + cap.cap + '</div></div>';
+	};
+
+	var parseKeybindWindows = function (serverResponse) {
+		var final = "";
+		$.each(JSON.parse(serverResponse.keybind), function (idx, item) {
+			if (!item.consecutive)
+				final += "<div class='nonconsecutive'>then</div>";
+			final += createShortcut(item);
+		});
+		return final;
 	};
 
 	var getId = function (friendlyName) {
@@ -135,7 +185,7 @@ $(document).ready(function () {
 				tablebody.html("");
 				$.each(data, function (idx, item) {
 					//<span class="key">CTRL</span>+<span class="key">Shift</span>+<span class="key">T</span></span>
-					tablebody.append('<tr><td class="kb_name">' + item.name + '</td><td><span class="shortcut">' + createShortcut(item) + '</td><td class="kb_desc">' + item.desc + '</td><td class="kb_context">' + item.context + '</td></tr>');
+					tablebody.append('<tr><td class="kb_name">' + item.name + '</td><td><span class="shortcut">' + parseKeybindWindows(item) + '</td><td class="kb_desc">' + item.desc + '</td><td class="kb_context">' + item.context + '</td></tr>');
 				});
 				keybindlist.removeClass("hidden");
 				keybindlist.animateCss('fadeIn');

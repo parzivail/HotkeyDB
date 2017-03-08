@@ -14,9 +14,9 @@ $tableStripedBgColor: darken($webpageBackgroundColor, 2);
 
 // Key defaults
 $keybindBaseColor: #D3D2CC;
-$keybindConcaveColor: lighten($keybindBaseColor, 5);
+$keybindConcaveColor: lighten($keybindBaseColor, 7);
 $keybindSpecialBaseColor: darken($keybindBaseColor, 19);
-$keybindSpecialConcaveColor: lighten($keybindSpecialBaseColor, 6);
+$keybindSpecialConcaveColor: lighten($keybindSpecialBaseColor, 8);
 $keybindCapTextColor: darken($keybindBaseColor, 60);
 
 // Media Query Ranges
